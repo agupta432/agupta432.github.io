@@ -4,87 +4,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Directory Pages</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .card {
-            width: 300px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 20px;
-        }
-
-        .card h2 {
-            margin-top: 0;
-            font-size: 1.5em;
-        }
-
-        .card p {
-            margin-bottom: 0;
-        }
-
-        .card a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-    </style>
+    <title>Portfolio - Software Developer</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file for styling -->
 </head>
 
 <body>
-    <div class="container" id="cardContainer">
-        <!-- Cards will be dynamically added here -->
-    </div>
+    <header>
+        <div class="container">
+            <h1>John Doe</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            fetchContentDirectory();
-        });
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I am a passionate software developer with experience in blockchain, JavaScript, Python, and data science
+                projects.</p>
+            <p>I enjoy solving complex problems and creating innovative solutions.</p>
+        </div>
+    </section>
 
-        function fetchContentDirectory() {
-            fetch('./content/') // Assuming content directory is in the same level
-                .then(response => response.text())
-                .then(text => {
-                    const parser = new DOMParser();
-                    const htmlContent = parser.parseFromString(text, 'text/html');
-                    const links = htmlContent.querySelectorAll('a');
+    <section id="portfolio">
+        <div class="container">
+            <h2>Portfolio</h2>
+            <div class="project">
+                <h3>Blockchain Project</h3>
+                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac odio eu justo
+                    ullamcorper congue. Nullam auctor convallis mi.</p>
+            </div>
+            <div class="project">
+                <h3>JavaScript Project</h3>
+                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac odio eu justo
+                    ullamcorper congue. Nullam auctor convallis mi.</p>
+            </div>
+            <div class="project">
+                <h3>Python Project</h3>
+                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac odio eu justo
+                    ullamcorper congue. Nullam auctor convallis mi.</p>
+            </div>
+            <div class="project">
+                <h3>Data Science Project</h3>
+                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac odio eu justo
+                    ullamcorper congue. Nullam auctor convallis mi.</p>
+            </div>
+        </div>
+    </section>
 
-                    links.forEach(link => {
-                        const fileName = link.getAttribute('href');
-                        if (fileName !== '../') { // Exclude the parent directory link
-                            createCard(fileName);
-                        }
-                    });
-                })
-                .catch(error => console.error('Error fetching content directory:', error));
-        }
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>Email: john.doe@example.com</p>
+            <p>Phone: +1234567890</p>
+        </div>
+    </section>
 
-        function createCard(fileName) {
-            const cardContainer = document.getElementById('cardContainer');
-            const cardDiv = document.createElement('div');
-            cardDiv.className = 'card';
-            cardDiv.innerHTML = `
-                <h2>${fileName}</h2>
-                <p>This is a brief description of ${fileName}.</p>
-                <a href="${fileName}">Visit ${fileName}</a>
-            `;
-            cardContainer.appendChild(cardDiv);
-        }
-    </script>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 John Doe - All rights reserved</p>
+        </div>
+    </footer>
 </body>
 
 </html>
